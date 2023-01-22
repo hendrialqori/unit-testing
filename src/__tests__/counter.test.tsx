@@ -1,6 +1,6 @@
-import { Counter } from "./counter.component";
-import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { Counter } from "../components/Counter/counter.component";
+import { describe, it, expect } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 // describe('Counter', () => {
 //   it('Counter display corrent initial value', () => {
@@ -12,7 +12,6 @@ import { render, screen, fireEvent } from '@testing-library/react'
 //     expect(currentValue).toEqual(0)
 //   })
 // })
-
 
 // describe('App', () => {
 //   it('Render app', () => {
@@ -34,16 +33,14 @@ import { render, screen, fireEvent } from '@testing-library/react'
 //   <h3 data-testId="count">2</h3>`)
 // })
 
-describe('Render', () => {
-  it('Render counter component', () => {
+describe("Counter", () => {
+  it("Render counter component", () => {
+    const { getByTestId } = render(<Counter initialValue={0} />);
 
-    const {getByTestId} = render(<Counter initialValue={0}/>)
+    fireEvent.click(screen.getByText("Add 1"));
 
-    fireEvent.dblClick(screen.getByText('Add 1'))
+    const currentValue = Number(getByTestId("count").textContent);
 
-    const currentValue = Number(getByTestId('count').textContent)
-
-    expect(currentValue).toEqual(1)
-
-  })
-})
+    expect(currentValue).toEqual(1);
+  });
+});
