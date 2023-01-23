@@ -1,12 +1,12 @@
-import { Greet } from "../components/Greeting/greet.component";
+import { Greet } from "../components/greet.component";
 import { render, screen } from "@testing-library/react";
 import { test, expect, describe } from "vitest";
 
 describe("Greet", () => {
   test("render text", () => {
-    const { getByTestId } = render(<Greet />);
-    const result = getByTestId("greet").textContent;
+    render(<Greet />);
 
-    expect(result).toEqual("Hello world!");
+    const textElement = screen.getByText("Hello world!");
+    expect(textElement).toBeInTheDocument();
   });
 });

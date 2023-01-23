@@ -1,4 +1,4 @@
-import { Counter } from "../components/Counter/counter.component";
+import { Counter } from "../components/counter.component";
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 

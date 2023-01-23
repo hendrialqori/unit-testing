@@ -1,7 +1,11 @@
-import { Counter } from "./components/Counter/counter.component";
+import { RegisterForm } from "./components/form.component";
 
 function App() {
-  return <Counter initialValue={0} />;
+  return (
+    <div className="main">
+      <RegisterForm />
+    </div>
+  );
 }
 
 export default App;
