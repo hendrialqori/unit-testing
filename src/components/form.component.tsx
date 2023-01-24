@@ -5,8 +5,12 @@ export const RegisterForm: React.FC = () => {
         Form register
       </div>
       <div aria-label="input-name-wrapper">
-        <label htmlFor="name">name</label>
-        <input type="text" id="name" />
+        <label htmlFor="name">Name</label>
+        <input type="text" id="name" placeholder="your name" />
+      </div>
+      <div aria-label="address-wrapper">
+        <label htmlFor="address">address</label>
+        <textarea id="address" />
       </div>
       <div aria-label="select-wrapper">
         <label htmlFor="job-location">job location</label>

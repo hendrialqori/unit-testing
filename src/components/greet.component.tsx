@@ -1,3 +1,3 @@
 export const Greet: React.FC = () => {
-  return <div>Hello world!</div>;
+  return <div data-value="greet">Hello world!</div>;
 };

@@ -9,4 +9,12 @@ describe("Greet", () => {
     const textElement = screen.getByText("Hello world!");
     expect(textElement).toBeInTheDocument();
   });
+
+  test("Testing manually", () => {
+    const { container } = render(<Greet />);
+    const data_value = container.querySelector(
+      '[data-value="greet"]'
+    )?.textContent;
+    expect(data_value).toEqual("Hello world!");
+  });
 });

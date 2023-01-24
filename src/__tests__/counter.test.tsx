@@ -1,46 +1,41 @@
 import { Counter } from "../components/counter.component";
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import user from "@testing-library/user-event";
 
-// describe('Counter', () => {
-//   it('Counter display corrent initial value', () => {
-
-//     const {getByTestId} = render(<Counter initialValue={0}/>)
-
-//     const currentValue = Number(getByTestId('count').textContent)
-
-//     expect(currentValue).toEqual(0)
-//   })
-// })
-
-// describe('App', () => {
-//   it('Render app', () => {
-//     render(<Counter initialValue={0} />)
-
-//     screen.debug()
-//   })
-// })
-
-// it('App', () => {
-//   const {rerender} = render(<Counter initialValue={0}/>)
-//   rerender(<Counter initialValue={10} />)
-// })
-
-// test('render a counter', () => {
-//   const {asFragment, getByText} = render(<Counter initialValue={2}/>)
-//   expect(getByText('2'))
-//   expect(asFragment()).toMatchSnapshot(`
-//   <h3 data-testId="count">2</h3>`)
-// })
-
-describe("Counter", () => {
+describe.skip("Counter with Fire-Event", () => {
   it("Render counter component", () => {
-    const { getByTestId } = render(<Counter initialValue={0} />);
+    render(<Counter initialValue={0} />);
 
-    fireEvent.click(screen.getByText("Add 1"));
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Add 1",
+      })
+    );
 
-    const currentValue = Number(getByTestId("count").textContent);
+    const currentValue = screen.getByRole("heading", {
+      level: 3,
+    });
 
-    expect(currentValue).toEqual(1);
+    expect(currentValue).toHaveTextContent("1");
+  });
+});
+
+describe("Counter with user-event", () => {
+  test("Click button correctly", async () => {
+    user.setup();
+    render(<Counter initialValue={0} />);
+
+    const buttonElement = screen.getByRole("button", {
+      name: "Add 1",
+    });
+
+    const headingElement = screen.getByRole("heading", {
+      level: 3,
+    });
+
+    await user.dblClick(buttonElement);
+
+    expect(headingElement).toHaveTextContent("2");
   });
 });

@@ -11,8 +11,18 @@ describe("Form Registration", () => {
     });
     expect(titleElement).toBeInTheDocument();
 
-    const nameElement = screen.getByRole("textbox");
+    const nameElement = screen.getByRole("textbox", {
+      name: "Name",
+    });
     expect(nameElement).toBeInTheDocument();
+
+    const nameElement2 = screen.getByLabelText("Name", {
+      selector: "input",
+    });
+    expect(nameElement2).toBeInTheDocument();
+
+    const nameElement3 = screen.getByPlaceholderText("your name");
+    expect(nameElement3).toBeInTheDocument();
 
     const jobLocationElement = screen.getByRole("combobox");
     expect(jobLocationElement).toBeInTheDocument();
@@ -21,6 +31,11 @@ describe("Form Registration", () => {
       checked: true,
     });
     expect(termElement).toBeInTheDocument();
+
+    const termElement2 = screen.getByLabelText(
+      "I agree to the terms and condition"
+    );
+    expect(termElement2).toBeInTheDocument();
 
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toBeInTheDocument();

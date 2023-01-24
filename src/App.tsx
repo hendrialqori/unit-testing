@@ -1,9 +1,9 @@
-import { RegisterForm } from "./components/form.component";
+import { FormCounter } from "./components/form-count.component";
 
 function App() {
   return (
     <div className="main">
-      <RegisterForm />
+      <FormCounter />
     </div>
   );
 }
