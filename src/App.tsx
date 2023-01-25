@@ -1,9 +1,9 @@
-import { FormCounter } from "./components/form-count.component";
+import { RenderWithLayout } from "./hoc/withLayout";
 
 function App() {
   return (
     <div className="main">
-      <FormCounter />
+      <RenderWithLayout />
     </div>
   );
 }
